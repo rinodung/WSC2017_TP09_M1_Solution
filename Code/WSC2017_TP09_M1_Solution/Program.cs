@@ -16,7 +16,8 @@ namespace WSC2017_TP09_M1_Solution
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new LoginForm());
+            
         }
     }
 }
