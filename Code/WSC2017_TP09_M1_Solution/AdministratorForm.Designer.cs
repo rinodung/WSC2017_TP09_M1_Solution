@@ -34,13 +34,13 @@
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.officeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.session1DataSet = new WSC2017_TP09_M1_Solution.session1DataSet();
             this.usersBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.usersTableAdapter = new WSC2017_TP09_M1_Solution.session1DataSetTableAdapters.UsersTableAdapter();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.userBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.roleIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.emailDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -53,7 +53,9 @@
             this.logsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.officeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.roleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.userBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.officeBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.session1DataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -78,6 +80,7 @@
             this.addUserToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.A)));
             this.addUserToolStripMenuItem.Size = new System.Drawing.Size(63, 20);
             this.addUserToolStripMenuItem.Text = "Add User";
+            this.addUserToolStripMenuItem.Click += new System.EventHandler(this.addUserToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
@@ -98,11 +101,18 @@
             // 
             // comboBox1
             // 
+            this.comboBox1.DataSource = this.officeBindingSource;
+            this.comboBox1.DisplayMember = "Title";
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(57, 44);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(310, 21);
             this.comboBox1.TabIndex = 2;
+            this.comboBox1.ValueMember = "ID";
+            // 
+            // officeBindingSource
+            // 
+            this.officeBindingSource.DataSource = typeof(WSC2017_TP09_M1_Solution.Office);
             // 
             // session1DataSet
             // 
@@ -126,6 +136,7 @@
             this.button1.TabIndex = 4;
             this.button1.Text = "Change Role";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
@@ -139,6 +150,7 @@
             // dataGridView1
             // 
             this.dataGridView1.AutoGenerateColumns = false;
+            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.iDDataGridViewTextBoxColumn,
@@ -156,12 +168,8 @@
             this.dataGridView1.DataSource = this.userBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(15, 99);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(734, 150);
+            this.dataGridView1.Size = new System.Drawing.Size(777, 329);
             this.dataGridView1.TabIndex = 6;
-            // 
-            // userBindingSource
-            // 
-            this.userBindingSource.DataSource = typeof(WSC2017_TP09_M1_Solution.User);
             // 
             // iDDataGridViewTextBoxColumn
             // 
@@ -235,6 +243,10 @@
             this.roleDataGridViewTextBoxColumn.HeaderText = "Role";
             this.roleDataGridViewTextBoxColumn.Name = "roleDataGridViewTextBoxColumn";
             // 
+            // userBindingSource
+            // 
+            this.userBindingSource.DataSource = typeof(WSC2017_TP09_M1_Solution.User);
+            // 
             // AdministratorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -250,9 +262,11 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "AdministratorForm";
             this.Text = "AMONIC Airlines Automatic  System";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.AdministratorForm_FormClosed);
             this.Load += new System.EventHandler(this.AdministratorForm_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.officeBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.session1DataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -288,5 +302,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn officeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn roleDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource userBindingSource;
+        private System.Windows.Forms.BindingSource officeBindingSource;
     }
 }

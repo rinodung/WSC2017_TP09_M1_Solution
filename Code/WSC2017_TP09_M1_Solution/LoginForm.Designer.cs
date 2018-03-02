@@ -54,6 +54,7 @@
             this.txt_username.Name = "txt_username";
             this.txt_username.Size = new System.Drawing.Size(300, 20);
             this.txt_username.TabIndex = 1;
+            this.txt_username.Text = "j.doe@amonic.com";
             // 
             // label2
             // 
@@ -79,6 +80,7 @@
             this.txt_password.Name = "txt_password";
             this.txt_password.Size = new System.Drawing.Size(300, 20);
             this.txt_password.TabIndex = 3;
+            this.txt_password.Text = "123";
             this.txt_password.UseSystemPasswordChar = true;
             // 
             // btn_Login

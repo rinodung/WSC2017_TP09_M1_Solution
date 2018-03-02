@@ -11,7 +11,8 @@ namespace WSC2017_TP09_M1_Solution
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class User
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,9 +23,14 @@ namespace WSC2017_TP09_M1_Solution
     
         public int ID { get; set; }
         public int RoleID { get; set; }
+        [Required]
+        [RegularExpression(@"[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}", ErrorMessage = "Invalid Email")]
         public string Email { get; set; }
+        [Required]
         public string Password { get; set; }
+        [Required]
         public string FirstName { get; set; }
+        [Required]
         public string LastName { get; set; }
         public Nullable<int> OfficeID { get; set; }
         public Nullable<System.DateTime> Birthdate { get; set; }
@@ -34,5 +40,6 @@ namespace WSC2017_TP09_M1_Solution
         public virtual ICollection<Log> Logs { get; set; }
         public virtual Office Office { get; set; }
         public virtual Role Role { get; set; }
+        
     }
 }

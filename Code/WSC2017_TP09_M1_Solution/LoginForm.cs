@@ -35,7 +35,7 @@ namespace WSC2017_TP09_M1_Solution
             using (session1Entities db = new session1Entities())
             {
                 string username = this.txt_username.Text;
-                string password = this.txt_username.Text;
+                string password = this.txt_password.Text;
                 User user = db.Users.FirstOrDefault(p => p.Email == username && p.Password == password);
                 if (user == null) { 
              
@@ -44,14 +44,17 @@ namespace WSC2017_TP09_M1_Solution
                     attempt--;
                 } else if (user.RoleID == 1)
                 {
+                    this.Hide();
                     AdministratorForm adminForm = new AdministratorForm();
                     adminForm.ShowDialog();
+                   
                 }
                 else if (user.RoleID == 2)
                 {
-
+                    this.Hide();
                     UserForm userForm = new UserForm();
                     userForm.ShowDialog();
+                  
                 }
                 
             } ;
