@@ -110,9 +110,8 @@
             this.lbl_Login_Result.ForeColor = System.Drawing.Color.Red;
             this.lbl_Login_Result.Location = new System.Drawing.Point(107, 219);
             this.lbl_Login_Result.Name = "lbl_Login_Result";
-            this.lbl_Login_Result.Size = new System.Drawing.Size(52, 13);
+            this.lbl_Login_Result.Size = new System.Drawing.Size(0, 13);
             this.lbl_Login_Result.TabIndex = 7;
-            this.lbl_Login_Result.Text = "Login Fail";
             // 
             // LoginForm
             // 

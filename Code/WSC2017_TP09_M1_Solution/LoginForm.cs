@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Timers;
 using System.Windows.Forms;
 using WSC2017_TP09_M1_Solution;
 
@@ -15,18 +16,21 @@ namespace WSC2017_TP09_M1_Solution
     public partial class LoginForm : Form
     {
         private int attempt = 3;
+        private System.Timers.Timer aTimer;
+        private int blockTime = 10;
         public LoginForm()
         {
-            InitializeComponent();           
+            InitializeComponent();
+            SetTimer();
         }
 
         private void tbn_Login_Click(object sender, EventArgs e)
         {
             
             if (attempt == 0)
-            {
-                this.lbl_Login_Result.Text = ("ALL 3 ATTEMPTS HAVE FAILED - CONTACT ADMIN");                
-                return;
+            {               
+                this.btn_Login.Enabled = false;
+                aTimer.Start();
             }
             using (session1Entities db = new session1Entities())
             {
@@ -53,31 +57,54 @@ namespace WSC2017_TP09_M1_Solution
             } ;
            
         }
-        private int ValidateUser(string username, string password)
+        private  void SetTimer()
         {
+            // Create a timer with a two second interval.
+            aTimer = new System.Timers.Timer(1000);
+            // Hook up the Elapsed event for the timer. 
+            aTimer.Elapsed += OnTimedEvent;
+            aTimer.AutoReset = true;
             
-            int result = 0;           
+        }
 
-            SqlConnection conn = new SqlConnection("Data Source=admin/SQLEXPRESS;Initial Catalog=session1;Integrated Security=True");
-            SqlCommand cmd = new SqlCommand();
-            cmd.Connection = conn;
-            cmd.CommandType = CommandType.Text;
-            cmd = new SqlCommand("Select @count=Count(*) from [dbo].[Users] where username=@username and password=@password", conn);
-            cmd.Parameters.AddWithValue("@email", this.txt_username.Text);
-            cmd.Parameters.AddWithValue("@password", this.txt_password.Text);
-            cmd.Parameters.Add("@count", SqlDbType.Int).Direction = ParameterDirection.Output;
-            conn.Open();
-            cmd.ExecuteNonQuery();
-            if (Convert.ToInt32(cmd.Parameters["@count"].Value) > 0)
+        private  void OnTimedEvent(Object source, ElapsedEventArgs e)
+        {
+            if (this.lbl_Login_Result.InvokeRequired)
             {
-                result = 1;
+                this.lbl_Login_Result.BeginInvoke((MethodInvoker)delegate () { this.lbl_Login_Result.Text = "All 3 apptempts have failed, please wait..." + blockTime--; });
             }
             else
             {
-                result = 0;
+                this.lbl_Login_Result.Text = "All 3 apptempts have failed, please wait..." + blockTime--;
             }
-            conn.Close();
-            return result;
+           
+            if(blockTime == 0)
+            {
+                aTimer.Stop();
+                attempt = 3;
+                blockTime = 10;
+                if (this.btn_Login.InvokeRequired)
+                {
+                    this.btn_Login.BeginInvoke((MethodInvoker)delegate () { this.btn_Login.Enabled = true; });
+                }
+                else
+                {
+                    this.btn_Login.Enabled = true;
+                    
+                }
+                if (this.lbl_Login_Result.InvokeRequired)
+                {
+                    this.lbl_Login_Result.BeginInvoke((MethodInvoker)delegate () {
+                        this.lbl_Login_Result.Text = "";
+                    });
+                }
+                else
+                {
+                    this.lbl_Login_Result.Text = "";
+                }
+
+               
+            }
         }
 
         private void btn_Exit_Click(object sender, EventArgs e)
