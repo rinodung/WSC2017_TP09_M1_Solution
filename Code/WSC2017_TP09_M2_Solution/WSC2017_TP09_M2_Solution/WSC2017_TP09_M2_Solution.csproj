@@ -66,6 +66,18 @@
     <Compile Include="Country.cs">
       <DependentUpon>Session2Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="EditSchedule.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditSchedule.Designer.cs">
+      <DependentUpon>EditSchedule.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ImportChange.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ImportChange.Designer.cs">
+      <DependentUpon>ImportChange.cs</DependentUpon>
+    </Compile>
     <Compile Include="ManageFlightSchedule.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -109,6 +121,12 @@
     <Compile Include="User.cs">
       <DependentUpon>Session2Model.tt</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="EditSchedule.resx">
+      <DependentUpon>EditSchedule.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ImportChange.resx">
+      <DependentUpon>ImportChange.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ManageFlightSchedule.resx">
       <DependentUpon>ManageFlightSchedule.cs</DependentUpon>
     </EmbeddedResource>

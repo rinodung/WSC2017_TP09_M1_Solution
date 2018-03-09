@@ -47,5 +47,22 @@ namespace WSC2017_TP09_M2_Solution
             }
 
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            EditSchedule editScheduleForm = new EditSchedule();            
+            editScheduleForm.Show();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            ImportChange importChangeForm = new ImportChange();
+            importChangeForm.Show();
+        }
     }
 }

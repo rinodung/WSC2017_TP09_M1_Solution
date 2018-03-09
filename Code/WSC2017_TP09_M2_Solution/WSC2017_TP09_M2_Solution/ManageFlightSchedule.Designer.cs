@@ -52,8 +52,6 @@
             this.fillByToolStrip = new System.Windows.Forms.ToolStrip();
             this.fillByToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            
             this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.timeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -64,13 +62,13 @@
             this.economyPriceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.confirmedDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.flightNumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.grpFilter.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.airportsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.session2DataSet)).BeginInit();
             this.fillByToolStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
-            
             this.SuspendLayout();
             // 
             // grpFilter
@@ -120,6 +118,7 @@
             // 
             // datePickerOutBound
             // 
+            this.datePickerOutBound.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.datePickerOutBound.Location = new System.Drawing.Point(70, 70);
             this.datePickerOutBound.Name = "datePickerOutBound";
             this.datePickerOutBound.Size = new System.Drawing.Size(200, 20);
@@ -221,6 +220,7 @@
             this.button1.TabIndex = 2;
             this.button1.Text = "Cancel Flight";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
@@ -230,6 +230,7 @@
             this.button2.TabIndex = 3;
             this.button2.Text = "Edit Flight";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button3
             // 
@@ -239,6 +240,7 @@
             this.button3.TabIndex = 4;
             this.button3.Text = "Import Flight";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // aircraftsTableAdapter
             // 
@@ -283,14 +285,8 @@
             this.dataGridView1.Location = new System.Drawing.Point(12, 119);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(768, 150);
+            this.dataGridView1.Size = new System.Drawing.Size(768, 299);
             this.dataGridView1.TabIndex = 6;
-            // 
-            // bindingSource1
-            // 
-            this.bindingSource1.DataSource = typeof(WSC2017_TP09_M2_Solution.Schedule);
-            // 
-         
             // 
             // iDDataGridViewTextBoxColumn
             // 
@@ -364,6 +360,10 @@
             this.flightNumberDataGridViewTextBoxColumn.Name = "flightNumberDataGridViewTextBoxColumn";
             this.flightNumberDataGridViewTextBoxColumn.ReadOnly = true;
             // 
+            // bindingSource1
+            // 
+            this.bindingSource1.DataSource = typeof(WSC2017_TP09_M2_Solution.Schedule);
+            // 
             // ManageFlightSchedule
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -387,7 +387,6 @@
             this.fillByToolStrip.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
-            
             this.ResumeLayout(false);
             this.PerformLayout();
 
